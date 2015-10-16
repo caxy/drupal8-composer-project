@@ -5,6 +5,11 @@
             "email": "bdoherty@caxy.com"
         }
     ],
+    "autoload": {
+        "psr-4": {
+            "": "src/"
+        }
+    },
     "require": {
         "composer/installers": "^1.0.21",
         "drupal/core": "*",
@@ -24,11 +29,6 @@
         }
     ],
     "extra": {
-        "_readme": [
-            "Occasionally, the installer-path for type:drupal-core must be an absolute path.",
-            "/srv/app/prod/web/core/: [type:drupal-core]",
-            "https://github.com/composer/composer/issues/4451"
-        ],
         "installer-paths": {
             "web/core/": ["type:drupal-core"],
             "web/modules/{$name}/": ["type:drupal-module"],
@@ -37,5 +37,10 @@
             "web/profiles/{$name}/": ["type:drupal-profile"],
             "web/drush/{$name}/": ["type:drupal-drush"]
         }
+    },
+    "scripts": {
+        "post-dependencies-solving": [
+            "ComposerScriptHandler::rewriteInstallerPathForCore"
+        ]
     }
 }
