@@ -1,3 +1,9 @@
 /vendor
 /bin/*
 !/bin/.gitkeep
+/web/modules/*
+!/web/modules/.gitkeep
+/web/profiles/*
+!/web/profiles/.gitkeep
+/web/themes/*
+!/web/themes/.gitkeep
